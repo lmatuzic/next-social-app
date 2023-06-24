@@ -1,8 +1,6 @@
+import Navigation from "./components/layouts/Navigation";
 import "./globals.css";
-import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -17,7 +15,12 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className="container mx-auto px-4">
+          <header className="flex justify-end max-w-max">
+            <Navigation />
+          </header>
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );
