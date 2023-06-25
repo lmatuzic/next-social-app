@@ -1,4 +1,4 @@
-import Navigation from "./components/layouts/Navigation";
+import Navigation from "./components/navigation/Navigation";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 
@@ -15,10 +15,8 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className="container mx-auto px-4">
-          <header className="flex justify-end max-w-max">
-            <Navigation />
-          </header>
+        <body>
+          <Navigation />
           {children}
         </body>
       </html>
