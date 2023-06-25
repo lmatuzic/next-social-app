@@ -1,5 +1,6 @@
 'use client';
 
+import { UserButton } from '@clerk/nextjs';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -22,23 +23,26 @@ export default function Navigation() {
 	}, [isOpen]);
 
 	return (
-		<nav className='bg-black px-4 flex items-center justify-between h-16'>
-			<Link href='/' className='text-white'>
-				Logo
-			</Link>
+		<nav className='bg-black'>
+			<div className='container flex items-center justify-between px-4 h-16'>
+				<Link href='/' className='text-white'>
+					Logo
+				</Link>
 
-			<div className='hidden md:block space-x-4'>
-				<NavLink linkName='home' route='/' />
-				<NavLink linkName='about' route='/about' />
+				<div className='hidden md:flex items-center space-x-6'>
+					<NavLink linkName='home' route='/' />
+					<NavLink linkName='about' route='/about' />
+					<UserButton />
+				</div>
+
+				<button
+					onClick={toggleMenu}
+					type='button'
+					className='text-gray-400 hover:text-white md:hidden'
+				>
+					{!isOpen ? <Menu /> : <X />}
+				</button>
 			</div>
-
-			<button
-				onClick={toggleMenu}
-				type='button'
-				className='text-gray-400 hover:text-white md:hidden'
-			>
-				{!isOpen ? <Menu /> : <X />}
-			</button>
 
 			{isOpen && <MobileNav />}
 		</nav>
